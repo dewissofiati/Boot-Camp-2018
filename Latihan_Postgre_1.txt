@@ -1,0 +1,18 @@
+1. select * from employees order by email desc;
+2. select * from employees where salary > 3200 and salary <= 12000 order by salary;
+3. select * from employees where first_name like 'A%';
+4. select * from employees where employee_id in (103, 115, 196, 187, 102, 100);
+5. select * from employees where last_name like '_u%';
+6. select distinct department_id from employees order by department_id;
+7. select concat(first_name,' ' ,last_name) as nama_lengkap_karyawan, 
+	department_id as kode_jabatan, 
+	salary*12 as gaji_setahun 
+	from employees 
+	where department_id=100;
+8. select last_name as nama_belakang, 
+	salary as gaji_perbulan, 
+	department_id as kode_jabatan 
+	from employees 
+	where commission_pct is null;
+9. select * from employees
+	where job_id!='IT_PROG' and job_id!='SH_CLERK';
