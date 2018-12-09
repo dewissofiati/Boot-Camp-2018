@@ -1,0 +1,8 @@
+4. select
+	round(e.salary*12) as gaji_setahun,
+	count(e.employee_id) as jumlah_karyawan
+from employees e 
+where e.commission_pct is not null
+group by gaji_setahun
+order by gaji_setahun desc;
+

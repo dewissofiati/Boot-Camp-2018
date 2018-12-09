@@ -1,0 +1,21 @@
+1. select 
+	e.employee_id as Kode_Karyawan,
+	d.department_name as Nama_Department,
+	concat(e.first_name,' ', e.last_name) as Nama_Lengkap,
+	to_char(e.salary, '9,999,999') as Gaji_Sebulan,
+	case
+	when coalesce(e.commission_pct, 0)=0
+	then 'Tidak Punya Komisi'
+	else
+	to_char((e.salary * e.commission_pct), '9,999,999')
+	end as Mendapatkan_Komisi,
+	to_char(e.salary + (e.salary * coalesce(e.commission_pct,0)),'9,999,999') as Gaji_Terima
+	from
+	employees e, departments d
+	where (d.department_id = e.department_id) and
+	e.salary + (e.salary * coalesce(e.commission_pct,0)) >= 12000
+	order by Gaji_Terima;
+
+
+*to_char(1485, '9,999')	' 1,485'*
+

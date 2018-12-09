@@ -1,0 +1,16 @@
+2. select
+	e.employee_id as Kode_karyawan,
+	concat(e.first_name,' ', e.last_name) as Nama_Karyawan,
+	d.department_name as Nama_Bagian,
+	case when m.employee_id is null
+	then 'Saya tidak punya manager'
+	else
+	concat(m.first_name,' ', m.last_name) 
+	end as Manager_Name,
+	j.job_title as Nama_Jabatan
+
+	from employees e
+	join departments d on e.department_id = d.department_id
+	left join employees m on e.employee_id = m.manager_id
+	join jobs j on e.job_id = j.job_id
+	order by manager_name, Nama_Karyawan;

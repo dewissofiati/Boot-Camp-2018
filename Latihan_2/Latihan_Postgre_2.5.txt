@@ -1,0 +1,14 @@
+5. select
+	e.employee_id as kode_karyawan,
+	concat(e.first_name,' ', e.last_name) as nama_lengkap,
+	to_char(e.salary,'9,999,999') as gaji_karyawan,
+	j.job_title as jabatan,
+	e.email as email
+
+	from employees e
+	join jobs j on e.job_id = j.job_id
+	where e.salary >= (select max(em.salary)
+	from employees em
+	where em.job_id = 'IT_PROG')
+	and commission_pct is not null
+	order by gaji_karyawan, e.job_id;

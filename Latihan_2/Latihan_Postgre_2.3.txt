@@ -1,0 +1,10 @@
+3. select
+	d.department_id as dep_id,
+	d.department_name as dep_name,
+	round(sum(e.salary)) as total_gaji
+
+
+	from departments d, employees e
+	where d.department_id = e.department_id
+	group by dep_id
+	order by total_gaji desc;
